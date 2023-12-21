@@ -1,0 +1,9 @@
+--Data Tap Code for instrumentaion
+DECLARE @data_tap_id bigint
+Declare @return_value bigint
+EXEC    @return_value = [SSISDB].[catalog].[add_data_tap]
+		@execution_id = @execution_id,
+		@task_package_path = '\Package\instrumentation',
+		@dataflow_path_id_string = 'Paths[ADO NET Source.ADO NET Source Output]',
+		@data_filename = 'instumentation.csv',
+		@data_tap_id = @data_tap_id OUTPUT

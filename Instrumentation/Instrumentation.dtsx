@@ -1,0 +1,1134 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/21/2023 4:40:00 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="NASIR"
+  DTS:CreatorName="NASIR\nasir"
+  DTS:DTSID="{DEF64F59-FA6E-4FD8-9110-0DCA383EB169}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Instrumentation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{5BCCB11D-858E-480D-963F-E7682D0268CA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Nasir.AdventureWorks2022]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{A4D0E614-D8A4-4298-9762-9A6CE0B75EAC}"
+      DTS:ObjectName="Nasir.AdventureWorks2022">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=Nasir;Initial Catalog=AdventureWorks2022;Integrated Security=True;Encrypt=False;Application Name=SSIS-Package-{A4D0E614-D8A4-4298-9762-9A6CE0B75EAC}Nasir.AdventureWorks2022;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{63AC58E1-8ACC-44CE-A902-8E7F830D11DC}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="Variable">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\instrumentation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{2B19F756-DF78-48DD-976E-F4937F684C64}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="instrumentation"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\instrumentation\ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="Consumes data from SQL Server, OLE DB, ODBC, or Oracle, using the corresponding .NET Framework data provider. Use a Transact-SQL statement to define the result set. For example, extract data from SQL Server with the .NET Framework data provider for SQL Server."
+              name="ADO NET Source"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement used by the component to extract data."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether to allow non-string external columns to be implicitly converted to strings at the output columns."
+                  name="AllowImplicitStringConversion">true</property>
+                <property
+                  dataType="System.String"
+                  description="The Source database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"HumanResources"."Employee"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the mode to retrieve external column information"
+                  name="AccessMode"
+                  typeConverter="Microsoft.SqlServer.Dts.Pipeline.DataReaderSourceAdapter+EnumToStringConverter">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.DataReaderSourceAdapter</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\instrumentation\ADO NET Source.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Nasir.AdventureWorks2022]"
+                  connectionManagerRefId="Package.ConnectionManagers[Nasir.AdventureWorks2022]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output]"
+                  name="ADO NET Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[BusinessEntityID]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NationalIDNumber]"
+                      length="15"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[LoginID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[LoginID]"
+                      length="256"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[LoginID]"
+                      name="LoginID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OrganizationNode]"
+                      length="892"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationNode]"
+                      name="OrganizationNode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OrganizationLevel]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[JobTitle]"
+                      length="50"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[JobTitle]"
+                      name="JobTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[BirthDate]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[MaritalStatus]"
+                      length="1"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[Gender]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Gender]"
+                      length="1"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[Gender]"
+                      name="Gender"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HireDate]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SalariedFlag]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SalariedFlag]"
+                      name="SalariedFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[VacationHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VacationHours]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[VacationHours]"
+                      name="VacationHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SickLeaveHours]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CurrentFlag]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[rowguid]"
+                      dataType="guid"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[rowguid]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[rowguid]"
+                      name="rowguid"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ModifiedDate]"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[BusinessEntityID]"
+                      dataType="i4"
+                      name="BusinessEntityID" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      name="NationalIDNumber" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      name="LoginID" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      name="OrganizationNode" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[OrganizationLevel]"
+                      dataType="i2"
+                      name="OrganizationLevel" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      name="JobTitle" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[BirthDate]"
+                      dataType="dbDate"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      name="MaritalStatus" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      name="Gender" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[HireDate]"
+                      dataType="dbDate"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SalariedFlag]"
+                      dataType="bool"
+                      name="SalariedFlag" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[VacationHours]"
+                      dataType="i2"
+                      name="VacationHours" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[SickLeaveHours]"
+                      dataType="i2"
+                      name="SickLeaveHours" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[CurrentFlag]"
+                      dataType="bool"
+                      name="CurrentFlag" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[rowguid]"
+                      dataType="guid"
+                      name="rowguid" />
+                    <externalMetadataColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].ExternalColumns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="ModifiedDate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output]"
+                  isErrorOut="true"
+                  name="ADO NET Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[LoginID]"
+                      name="LoginID" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OrganizationNode]"
+                      name="OrganizationNode" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[JobTitle]"
+                      name="JobTitle" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[MaritalStatus]"
+                      name="MaritalStatus" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[Gender]"
+                      name="Gender" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SalariedFlag]"
+                      name="SalariedFlag" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VacationHours]"
+                      dataType="i2"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[VacationHours]"
+                      name="VacationHours" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[CurrentFlag]"
+                      name="CurrentFlag" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[rowguid]"
+                      name="rowguid" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ModifiedDate]"
+                      name="ModifiedDate" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\instrumentation\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::Variable</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\instrumentation\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\instrumentation\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\instrumentation\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\instrumentation\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\instrumentation\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[BusinessEntityID]"
+                      cachedDataType="i4"
+                      cachedName="BusinessEntityID"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BusinessEntityID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[NationalIDNumber]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NationalIDNumber"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[NationalIDNumber]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[LoginID]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="LoginID"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[LoginID]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">3</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[OrganizationNode]"
+                      cachedDataType="bytes"
+                      cachedLength="892"
+                      cachedName="OrganizationNode"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationNode]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">4</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[OrganizationLevel]"
+                      cachedDataType="i2"
+                      cachedName="OrganizationLevel"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationLevel]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">5</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[JobTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="JobTitle"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[JobTitle]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">6</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[BirthDate]"
+                      cachedDataType="dbDate"
+                      cachedName="BirthDate"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BirthDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">7</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[MaritalStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="MaritalStatus"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[MaritalStatus]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">8</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[Gender]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Gender"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[Gender]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">9</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[HireDate]"
+                      cachedDataType="dbDate"
+                      cachedName="HireDate"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[HireDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">10</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[SalariedFlag]"
+                      cachedDataType="bool"
+                      cachedName="SalariedFlag"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SalariedFlag]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">11</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[VacationHours]"
+                      cachedDataType="i2"
+                      cachedName="VacationHours"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[VacationHours]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">12</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[SickLeaveHours]"
+                      cachedDataType="i2"
+                      cachedName="SickLeaveHours"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SickLeaveHours]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">13</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[CurrentFlag]"
+                      cachedDataType="bool"
+                      cachedName="CurrentFlag"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[CurrentFlag]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">14</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[rowguid]"
+                      cachedDataType="guid"
+                      cachedName="rowguid"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[rowguid]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">15</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\instrumentation\Sort.Inputs[Sort Input].Columns[ModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="ModifiedDate"
+                      lineageId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[ModifiedDate]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">16</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\instrumentation\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[BusinessEntityID]"
+                      dataType="i4"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[BusinessEntityID]"
+                      name="BusinessEntityID"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BusinessEntityID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[NationalIDNumber]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[NationalIDNumber]"
+                      name="NationalIDNumber"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[NationalIDNumber]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[LoginID]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[LoginID]"
+                      name="LoginID"
+                      sortKeyPosition="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[LoginID]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[OrganizationNode]"
+                      dataType="bytes"
+                      length="892"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[OrganizationNode]"
+                      name="OrganizationNode"
+                      sortKeyPosition="4">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationNode]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[OrganizationLevel]"
+                      dataType="i2"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[OrganizationLevel]"
+                      name="OrganizationLevel"
+                      sortKeyPosition="5">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[OrganizationLevel]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[JobTitle]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[JobTitle]"
+                      name="JobTitle"
+                      sortKeyPosition="6">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[JobTitle]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[BirthDate]"
+                      dataType="dbDate"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[BirthDate]"
+                      name="BirthDate"
+                      sortKeyPosition="7">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[BirthDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[MaritalStatus]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[MaritalStatus]"
+                      name="MaritalStatus"
+                      sortKeyPosition="8">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[MaritalStatus]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[Gender]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[Gender]"
+                      name="Gender"
+                      sortKeyPosition="9">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[Gender]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[HireDate]"
+                      dataType="dbDate"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[HireDate]"
+                      name="HireDate"
+                      sortKeyPosition="10">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[HireDate]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[SalariedFlag]"
+                      dataType="bool"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[SalariedFlag]"
+                      name="SalariedFlag"
+                      sortKeyPosition="11">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SalariedFlag]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[VacationHours]"
+                      dataType="i2"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[VacationHours]"
+                      name="VacationHours"
+                      sortKeyPosition="12">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[VacationHours]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[SickLeaveHours]"
+                      dataType="i2"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[SickLeaveHours]"
+                      name="SickLeaveHours"
+                      sortKeyPosition="13">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[SickLeaveHours]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[CurrentFlag]"
+                      dataType="bool"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[CurrentFlag]"
+                      name="CurrentFlag"
+                      sortKeyPosition="14">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[CurrentFlag]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[rowguid]"
+                      dataType="guid"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[rowguid]"
+                      name="rowguid"
+                      sortKeyPosition="15">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[rowguid]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[ModifiedDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\instrumentation\Sort.Outputs[Sort Output].Columns[ModifiedDate]"
+                      name="ModifiedDate"
+                      sortKeyPosition="16">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output].Columns[ModifiedDate]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\instrumentation.Paths[ADO NET Source Output]"
+              endId="Package\instrumentation\Row Count.Inputs[Row Count Input 1]"
+              name="ADO NET Source Output"
+              startId="Package\instrumentation\ADO NET Source.Outputs[ADO NET Source Output]" />
+            <path
+              refId="Package\instrumentation.Paths[Row Count Output 1]"
+              endId="Package\instrumentation\Sort.Inputs[Sort Input]"
+              name="Row Count Output 1"
+              startId="Package\instrumentation\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\instrumentation"
+          TopLeft="331.428572134096,51.99999995442" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\instrumentation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\instrumentation\ADO NET Source"
+          TopLeft="360.714286482152,51.99999995442" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\instrumentation\Row Count"
+          TopLeft="413.571429451814,202.647058645901" />
+        <EdgeLayout
+          Id="Package\instrumentation.Paths[ADO NET Source Output]"
+          TopLeft="439.514286482152,93.59999995442">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="38.8571429696618,109.047058691481"
+              Start="0,0"
+              End="38.8571429696618,101.547058691481">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5235293457407" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,50.5235293457407"
+                    Point2="0,54.5235293457407"
+                    Point3="4,54.5235293457407" />
+                  <mssgle:LineSegment
+                    End="34.8571429696618,54.5235293457407" />
+                  <mssgle:CubicBezierSegment
+                    Point1="34.8571429696618,54.5235293457407"
+                    Point2="38.8571429696618,54.5235293457407"
+                    Point3="38.8571429696618,58.5235293457407" />
+                  <mssgle:LineSegment
+                    End="38.8571429696618,101.547058691481" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="11.4285714848309,59.5235293457407,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\instrumentation\Sort"
+          TopLeft="508.571429654044,310.470587963155" />
+        <EdgeLayout
+          Id="Package\instrumentation.Paths[Row Count Output 1]"
+          TopLeft="478.371429451814,244.247058645901">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.00000020223,66.2235293172532"
+              Start="0,0"
+              End="79.00000020223,58.7235293172532">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.1117646586266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.1117646586266"
+                    Point2="0,33.1117646586266"
+                    Point3="4,33.1117646586266" />
+                  <mssgle:LineSegment
+                    End="75.00000020223,33.1117646586266" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.00000020223,33.1117646586266"
+                    Point2="79.00000020223,33.1117646586266"
+                    Point3="79.00000020223,37.1117646586266" />
+                  <mssgle:LineSegment
+                    End="79.00000020223,58.7235293172532" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\instrumentation\ADO NET Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
